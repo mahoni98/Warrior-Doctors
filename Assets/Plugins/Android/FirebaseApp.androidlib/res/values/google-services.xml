@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://dashyslime-default-rtdb.europe-west1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">608641975054</string>
+  <string name="google_storage_bucket" translatable="false">dashyslime.appspot.com</string>
+  <string name="project_id" translatable="false">dashyslime</string>
+  <string name="google_api_key" translatable="false">AIzaSyDW9FzTdtu_w9xW3j-08wPX3DAX72wIvsY</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDW9FzTdtu_w9xW3j-08wPX3DAX72wIvsY</string>
+  <string name="google_app_id" translatable="false">1:608641975054:android:665cb0350659cfcaa84d5f</string>
+  <string name="default_web_client_id" translatable="false">608641975054-s2umlhd25c2rg2dp6tktaklk8e6p4qll.apps.googleusercontent.com</string>
+</resources>
