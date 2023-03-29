@@ -16,6 +16,15 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+
+        _rb = GetComponent<Rigidbody>();
+        coin = GetComponentInChildren<GoToPlayer>().gameObject;
+        coin.SetActive(false);
+        heart = GetComponentInChildren<Heart>().gameObject;
+        heart.SetActive(false);
+        LiquidSplat = GetComponentInChildren<LiquidSplat>().gameObject;
+
+        coin.SetActive(false);
         coin.SetActive(false);
         heart.SetActive(false);
         if (!_target)
@@ -74,6 +83,6 @@ public class EnemyController : MonoBehaviour
         ds.isScale = true;
 
         trail.transform.SetParent(GroundController.instance.treeparent.transform);
-        
+
     }
 }

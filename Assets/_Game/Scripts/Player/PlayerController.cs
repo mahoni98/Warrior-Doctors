@@ -4,7 +4,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Random=UnityEngine.Random;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,10 +31,12 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-    [SerializeField] GameObject deathEffect,playerObject;
+    [SerializeField] GameObject deathEffect, playerObject;
 
     [SerializeField] BoxCollider col;
-    
+    [SerializeField] private Animator _Animator;
+
+
     private void Awake()
     {
         instance = this;
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Movement(Vector3 Direction,bool CollisionTree = false)
+    public void Movement(Vector3 Direction, bool CollisionTree = false)
     {
         Time.timeScale = 1;
         transform.DOKill();
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(Direction);
         float MoveTime = Vector3.Distance(Direction, transform.position);
         float timing = MoveTime / 10f;
-        
+
         transform.DOMove(Direction, timing).OnUpdate(() =>
         {
             Time.timeScale = 1;
@@ -80,10 +82,12 @@ public class PlayerController : MonoBehaviour
         });
 
         Vector3 rot = new Vector3(360, 0, 0);
-
+        _Animator.Play("Jump");
         playerCube.DOLocalRotate(rot, timing, RotateMode.LocalAxisAdd).OnComplete(() =>
         {
-            playerCube.transform.localEulerAngles = new Vector3(0,0,0);
+            playerCube.transform.localEulerAngles = new Vector3(0, 0, 0);
+            //_Animator.SetBool("Jump", false);
+            _Animator.Play("Idle");
             CreateTrail();
         });
     }
@@ -100,11 +104,11 @@ public class PlayerController : MonoBehaviour
         for (int x = 0; x < PU.ProjectileRepeat; x++)
         {
             List<ProjectileController> projectileList = new List<ProjectileController>();
-            
+
             float winkel = 0;
             float AngularMix = 0;
 
-            if (PU.ProjectileAngular && PU.ProjectileCount>1) 
+            if (PU.ProjectileAngular && PU.ProjectileCount > 1)
             {
                 winkel = 45 / (PU.ProjectileCount - 1);
                 AngularMix = 45 / 2f;
@@ -116,7 +120,7 @@ public class PlayerController : MonoBehaviour
                 _obj.AddComponent<Destoryer>();
                 var _pc = _obj.GetComponent<ProjectileController>();
                 projectileList.Add(_pc);
-                _obj.transform.position = transform.position + transform.forward*2f + transform.up;
+                _obj.transform.position = transform.position + transform.forward * 2f + transform.up;
 
                 _obj.transform.eulerAngles = new Vector3(0, (transform.eulerAngles.y - AngularMix) + (winkel * (i)), 0);
 
@@ -125,7 +129,7 @@ public class PlayerController : MonoBehaviour
                 if (!PU.ProjectileAngular)
                     yield return new WaitForSeconds(0.1f);
             }
-            
+
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -137,7 +141,7 @@ public class PlayerController : MonoBehaviour
     public void OnHit()
     {
         GroundController.instance.AddKill();
-        
+
         if (isMove)
         {
             Debug.Log("Score ++");
@@ -152,13 +156,13 @@ public class PlayerController : MonoBehaviour
         {
             var fx = Instantiate(deathEffect);
             fx.transform.position = transform.position;
-          
+
             StartCoroutine(deathWait());
             //this.enabled = false;
 
             col.enabled = false;
         }
-        
+
         canvasUpdate();
     }
 
@@ -168,14 +172,14 @@ public class PlayerController : MonoBehaviour
         PlayerSwipe.instance.gameObject.SetActive(false);
 
         Time.timeScale = 1f;
-        
+
         yield return new WaitForSecondsRealtime(2f);
-        
+
         Debug.Log("GameOver");
         Time.timeScale = 1f;
         DOTween.KillAll();
         this.gameObject.SetActive(false);
-        
+
         GameOverCanvas.SetActive(true);
         LevelManager.Instance.LevelFailed();
     }
@@ -185,7 +189,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Score ++");
         UpgradeSystem.instance.AddCoin();
     }
-    
+
     void canvasUpdate()
     {
         healthBarFill.fillAmount = health / 100f;
@@ -227,7 +231,7 @@ public class PlayerController : MonoBehaviour
     }
 }
 
-[Serializable] 
+[Serializable]
 public class ProjectileUpgrades
 {
     public int ProjectileCount;

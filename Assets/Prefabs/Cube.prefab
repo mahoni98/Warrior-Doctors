@@ -92,7 +92,7 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &8118794778646564299
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,7 +109,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &2432319281860830643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,6 +265,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 89167b7d478fd8a4f9c10b70c6a9eae8, type: 2}
+    - target: {fileID: 3283901261960382707, guid: 0ab91b400013f294db2aff375299f816,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5541054719068495598, guid: 0ab91b400013f294db2aff375299f816,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -333,6 +339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Arms
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118007238268133579, guid: 0ab91b400013f294db2aff375299f816,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8927018738905381489, guid: 0ab91b400013f294db2aff375299f816,
         type: 3}

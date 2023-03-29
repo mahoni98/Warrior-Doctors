@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using com.alictus.sdklite;
-using GameAnalyticsSDK;
+//using com.alictus.sdklite;
+//using GameAnalyticsSDK;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -38,21 +38,21 @@ public class LevelManager : MonoBehaviour
         lastLevel = PlayerPrefs.GetInt("lastLevel", 1);
         _tryNum = PlayerPrefs.GetInt("tryNum", 1);
         _isFirstLevelFirstlyCompleted = PlayerPrefs.GetInt("firstLevelCompleted", 0);
-        GameAnalytics.Initialize();
+        //GameAnalytics.Initialize();
         // EventManager.onFailed.AddListener(LevelFailed);
     }
 
 
     private void Start()
     {
-        AlictusSDK.SetConsentStatus(true);
-        AlictusSDK.LevelTag = "Level";
-        AlictusSDK.LevelIndex = lastLevel;
+        //AlictusSDK.SetConsentStatus(true);
+        //AlictusSDK.LevelTag = "Level";
+        //AlictusSDK.LevelIndex = lastLevel;
         LevelStart();
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level", lastLevel.ToString(), "Level_Progress");
-        FirebaseInit();
+        //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level", lastLevel.ToString(), "Level_Progress");
+        //FirebaseInit();
 
-        MaxSdk.InitializeSdk();
+        //MaxSdk.InitializeSdk();
     }
 
     private void Update()
@@ -81,9 +81,9 @@ public class LevelManager : MonoBehaviour
 
         // UIManager.instance.victoryPanel.SetActive(true);
 
-        AlictusSDK.LevelComplete(lastLevel, true);
-        AlictusSDK.LevelIndex = lastLevel;
-        AlictusSDK.ShowingIntersititaldAd();
+        //AlictusSDK.LevelComplete(lastLevel, true);
+        //AlictusSDK.LevelIndex = lastLevel;
+        //AlictusSDK.ShowingIntersititaldAd();
 
 
     }
@@ -92,8 +92,8 @@ public class LevelManager : MonoBehaviour
     {
 
         //  UIManager.instance.failPanel.SetActive(true);
-        AlictusSDK.LevelComplete(lastLevel, false);
-        AlictusSDK.ShowingIntersititaldAd();
+        //AlictusSDK.LevelComplete(lastLevel, false);
+        //AlictusSDK.ShowingIntersititaldAd();
 
 
     }
@@ -114,25 +114,25 @@ public class LevelManager : MonoBehaviour
 
     void FirebaseInit()
     {
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
-            var dependencyStatus = task.Result;
-            if (dependencyStatus == Firebase.DependencyStatus.Available)
-            {
-                // Create and hold a reference to your FirebaseApp,
-                // where app is a Firebase.FirebaseApp property of your application class.
-                // Crashlytics will use the DefaultInstance, as well;
-                // this ensures that Crashlytics is initialized.
-                Firebase.FirebaseApp app = Firebase.FirebaseApp.DefaultInstance;
+        //Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+        //    var dependencyStatus = task.Result;
+        //    if (dependencyStatus == Firebase.DependencyStatus.Available)
+        //    {
+        //        // Create and hold a reference to your FirebaseApp,
+        //        // where app is a Firebase.FirebaseApp property of your application class.
+        //        // Crashlytics will use the DefaultInstance, as well;
+        //        // this ensures that Crashlytics is initialized.
+        //        Firebase.FirebaseApp app = Firebase.FirebaseApp.DefaultInstance;
 
-                // Set a flag here for indicating that your project is ready to use Firebase.
-            }
-            else
-            {
-                UnityEngine.Debug.LogError(System.String.Format(
-                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-                // Firebase Unity SDK is not safe to use here.
-            }
-        });
+        //        // Set a flag here for indicating that your project is ready to use Firebase.
+        //    }
+        //    else
+        //    {
+        //        UnityEngine.Debug.LogError(System.String.Format(
+        //          "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+        //        // Firebase Unity SDK is not safe to use here.
+        //    }
+        //});
     }
 
     void LevelStart()
@@ -141,8 +141,6 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log("Last Level:" + lastLevel);
         Debug.Log("Level Mod:" + (lastLevel % harmoniaSettings.LevelArray.Count));
-      
-
 #endif
     }
 

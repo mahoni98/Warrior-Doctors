@@ -19,8 +19,9 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] Image levelSlider;
 
     [SerializeField] TextMeshProUGUI MovementLevelText, BulletWaveLevelText, BulletCountText, ShotGunText, levelText;
+    [SerializeField] Button RangeBtn;
 
-    [SerializeField] int MovementLevel, BulletWaveLevel, BulletCountLevel = 0;
+    [SerializeField] int MovementLevel, BulletWaveLevel, BulletCountLevel = 0, ShotGunLevel;
 
     public bool isPaused = false;
 
@@ -83,7 +84,7 @@ public class UpgradeSystem : MonoBehaviour
                 UpgradeUI.SetActive(true);
 
                 DG.Tweening.DOTween.KillAll();
-                
+
                 Time.timeScale = 0;
 
                 var obj = Instantiate(canvasEffect);
@@ -144,7 +145,7 @@ public class UpgradeSystem : MonoBehaviour
     public void BulletWave()
     {
         PlayerController.instance.PU.ProjectileRepeat++;
-        
+
         BulletWaveLevel++;
 
         Time.timeScale = 1;
@@ -163,14 +164,18 @@ public class UpgradeSystem : MonoBehaviour
         {
             PlayerController.instance.PU.ProjectileAngular = true;
             PlayerController.instance.PU.ProjectileCount++;
-
+            ShotGunLevel++;
             Time.timeScale = 1;
             UpgradeUI.SetActive(false);
             pc.enabled = true;
             isPaused = false;
             ps.enabled = true;
-
         }
+        else
+        {
+            RangeBtn.interactable = false;
+        }
+
         canvasUpdate();
         UpgradeAfter();
     }
@@ -191,23 +196,20 @@ public class UpgradeSystem : MonoBehaviour
             ShotGunText.text = "Level 0";
         }
 
-        MovementLevelText.text = "Level " + MovementLevel.ToString();
-        BulletCountText.text = "Level " + BulletCountLevel.ToString();
-        BulletWaveLevelText.text = "Level " + BulletWaveLevel.ToString();
+        ShotGunText.text = ShotGunLevel.ToString();
+        MovementLevelText.text = MovementLevel.ToString();
+        BulletCountText.text = BulletCountLevel.ToString();
+        BulletWaveLevelText.text = BulletWaveLevel.ToString();
 
         //levelText.text = (PlayerLevel + 1).ToString();
 
     }
-
     void UpgradeAfter()
     {
         ps.gameObject.SetActive(true);
         //pc.gameObject.SetActive(true);
-
         Time.timeScale = 0.01f;
     }
-
-
 }
 
 [Serializable]

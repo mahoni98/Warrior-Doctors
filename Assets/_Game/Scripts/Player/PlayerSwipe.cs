@@ -46,7 +46,7 @@ public class PlayerSwipe : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("DOKANDIR");
+                //Debug.Log("DOKANDIR");
                 swipe = new Vector3(pc.transform.position.x, pc.transform.position.z, 0);
                 SlowMo(0, 0.01f);
                 pc.DOKill();

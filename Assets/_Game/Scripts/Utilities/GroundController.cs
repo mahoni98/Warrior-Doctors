@@ -22,7 +22,7 @@ public class GroundController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI chapterText;
 
-    [SerializeField] Image levelSlider;
+    [SerializeField] Slider levelSlider;
 
     [SerializeField] List<GameObject> grounds;
 
@@ -74,7 +74,7 @@ public class GroundController : MonoBehaviour
         Debug.Log("ChangeMat");
 
         chapterText.text = (myChapter + 1).ToString();
-        levelSlider.fillAmount = EnemyKill / Chapters[1].EnemyCount;
+        levelSlider.value = EnemyKill / Chapters[1].EnemyCount;
 
         List<GameObject> newlist = new List<GameObject>();
 
@@ -151,7 +151,7 @@ public class GroundController : MonoBehaviour
 
         chapterText.text = (myChapter + 1).ToString();
 
-        levelSlider.fillAmount = EnemyKill / Chapters[myChapter].EnemyCount;
+        levelSlider.value = EnemyKill / Chapters[myChapter].EnemyCount;
 
         SliderObject.transform.localScale = sliderObjectScale;
         SliderObject.transform.DOScale(sliderObjectScale * 1.3f, 0.2f).OnComplete(() =>
