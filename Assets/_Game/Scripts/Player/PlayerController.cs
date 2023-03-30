@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     public void Movement(Vector3 Direction, bool CollisionTree = false)
     {
+        SoundController.instance.PlaySound(SoundController.Type.Jump);
         Time.timeScale = 1;
         transform.DOKill();
         StopAllCoroutines();
@@ -116,6 +117,8 @@ public class PlayerController : MonoBehaviour
 
             for (int i = 0; i < PU.ProjectileCount; i++)
             {
+
+                SoundController.instance.PlaySound(SoundController.Type.Gun);
                 var _obj = Instantiate(projectile);
                 _obj.AddComponent<Destoryer>();
                 var _pc = _obj.GetComponent<ProjectileController>();
@@ -140,6 +143,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnHit()
     {
+        //SoundController.instance.PlaySound(SoundController.Type.PlayerDamage);
         GroundController.instance.AddKill();
 
         if (isMove)
@@ -181,6 +185,7 @@ public class PlayerController : MonoBehaviour
         this.gameObject.SetActive(false);
 
         GameOverCanvas.SetActive(true);
+        SoundController.instance.PlaySound(SoundController.Type.lose);
         LevelManager.Instance.LevelFailed();
     }
 
@@ -224,6 +229,7 @@ public class PlayerController : MonoBehaviour
 
     public void addHealth()
     {
+        SoundController.instance.PlaySound(SoundController.Type.Heal);
         health += 25;
         if (health > 100)
             health = 100;

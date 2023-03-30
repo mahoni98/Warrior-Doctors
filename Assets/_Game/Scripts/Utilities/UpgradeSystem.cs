@@ -123,6 +123,7 @@ public class UpgradeSystem : MonoBehaviour
         pc.enabled = true;
         isPaused = false;
         ps.enabled = true;
+        RangeBtn.interactable = true;
 
         canvasUpdate();
         UpgradeAfter();
@@ -137,6 +138,7 @@ public class UpgradeSystem : MonoBehaviour
         pc.enabled = true;
         isPaused = false;
         ps.enabled = true;
+        RangeBtn.interactable = true;
 
         canvasUpdate();
         UpgradeAfter();
@@ -153,6 +155,7 @@ public class UpgradeSystem : MonoBehaviour
         pc.enabled = true;
         isPaused = false;
         ps.enabled = true;
+        RangeBtn.interactable = true;
 
         canvasUpdate();
         UpgradeAfter();
@@ -175,14 +178,13 @@ public class UpgradeSystem : MonoBehaviour
         {
             RangeBtn.interactable = false;
         }
-
         canvasUpdate();
         UpgradeAfter();
+
     }
 
     void canvasUpdate()
     {
-
         if (PlayerLevels.Length - 1 >= PlayerLevel)
             levelSlider.fillAmount = coinCount / PlayerLevels[PlayerLevel].CoinCount;
 

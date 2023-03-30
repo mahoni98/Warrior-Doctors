@@ -51,6 +51,7 @@ public class EnemyController : MonoBehaviour
 
     public void death()
     {
+        SoundController.instance.PlaySound(SoundController.Type.EnemyDeath);
         GroundController.instance.AddKill();
         CreateTrail();
         Destroy(this.gameObject);
