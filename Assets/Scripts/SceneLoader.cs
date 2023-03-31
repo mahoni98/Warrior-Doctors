@@ -26,40 +26,49 @@ public class SceneLoader : MonoBehaviour
     public void OnUpdateRequired()
     {
         isUpdateRequired = true;
-       
+
 
     }
 
     void Start()
     {
-        if (!isUpdateRequired)
+        //if (!isUpdateRequired)
+        //{
+        //    lastLevel = PlayerPrefs.GetInt("lastLevel", 1);
+
+        //    if (SceneControl.instance.firstLogin)
+        //    {
+
+        //        if(PlayerPrefs.GetInt("firstLevelCompleted") == 0 && HarmoniaSettings.tutorialType == HarmoniaGamesSettings.TutorialType.TutorialScene)
+        //        {
+        //            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.tutorialLevelIndex, HarmoniaSettings.loadingSecond));
+        //             #if UNITY_EDITOR
+        //             Debug.Log("Level: Tutorial" + HarmoniaSettings.tutorialLevelIndex);
+        //            #endif
+
+        //        }
+        //        else if (PlayerPrefs.GetInt("firstLevelCompleted") == 0 && HarmoniaSettings.tutorialType == HarmoniaGamesSettings.TutorialType.TutorialInLevel1)
+        //        {
+        //            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.LevelArray[((lastLevel - 1) % HarmoniaSettings.LevelArray.Count)], HarmoniaSettings.loadingSecond));
+        //        }
+        //        else
+        //        {
+        //            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.LevelArray[((lastLevel-1) % HarmoniaSettings.LevelArray.Count)], HarmoniaSettings.loadingSecond));
+        //        }
+
+        //        SceneControl.instance.firstLogin = false;
+        //    }
+        //    else
+        //        StartCoroutine(AsyncSceneLoader(SceneControl.instance.levelIndex, HarmoniaSettings.loadingSecond));
+        //}
+
+        if (PlayerPrefs.GetInt("firstLevelCompleted") == 0)
         {
-            lastLevel = PlayerPrefs.GetInt("lastLevel", 1);
-
-            if (SceneControl.instance.firstLogin)
-            {
-
-                if(PlayerPrefs.GetInt("firstLevelCompleted") == 0 && HarmoniaSettings.tutorialType == HarmoniaGamesSettings.TutorialType.TutorialScene)
-                {
-                    StartCoroutine(AsyncSceneLoader(HarmoniaSettings.tutorialLevelIndex, HarmoniaSettings.loadingSecond));
-                     #if UNITY_EDITOR
-                     Debug.Log("Level: Tutorial" + HarmoniaSettings.tutorialLevelIndex);
-                    #endif
-
-                }
-                else if (PlayerPrefs.GetInt("firstLevelCompleted") == 0 && HarmoniaSettings.tutorialType == HarmoniaGamesSettings.TutorialType.TutorialInLevel1)
-                {
-                    StartCoroutine(AsyncSceneLoader(HarmoniaSettings.LevelArray[((lastLevel - 1) % HarmoniaSettings.LevelArray.Count)], HarmoniaSettings.loadingSecond));
-                }
-                else
-                {
-                    StartCoroutine(AsyncSceneLoader(HarmoniaSettings.LevelArray[((lastLevel-1) % HarmoniaSettings.LevelArray.Count)], HarmoniaSettings.loadingSecond));
-                }
-   
-                SceneControl.instance.firstLogin = false;
-            }
-            else
-                StartCoroutine(AsyncSceneLoader(SceneControl.instance.levelIndex, HarmoniaSettings.loadingSecond));
+            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.tutorialLevelIndex, HarmoniaSettings.loadingSecond));
+        }
+        else
+        {
+            StartCoroutine(AsyncSceneLoader(3, HarmoniaSettings.loadingSecond));
         }
     }
 
@@ -75,7 +84,7 @@ public class SceneLoader : MonoBehaviour
             while (currentTime < seconds)
             {
                 currentTime += Time.deltaTime;
-                 loadingSlider.value = currentTime;
+                loadingSlider.value = currentTime;
                 yield return null;
             }
 
@@ -93,6 +102,6 @@ public class SceneLoader : MonoBehaviour
 
 
 
-        
+
     }
 }

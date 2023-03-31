@@ -142,6 +142,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6582038800191569117, guid: abf7043edbfd24abb829fcaf4fb9857a,
+        type: 3}
+      propertyPath: harmoniaSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 60ba3bc9573aa453293d93ba0e1c2f25,
+        type: 2}
     - target: {fileID: 8660316824520671287, guid: abf7043edbfd24abb829fcaf4fb9857a,
         type: 3}
       propertyPath: m_Name

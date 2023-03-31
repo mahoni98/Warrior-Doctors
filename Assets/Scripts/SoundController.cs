@@ -43,8 +43,9 @@ public class SoundController : MonoBehaviour
 
     private void Start()
     {
-        //MusicFunc(true);
+        MusicFunc(true);
     }
+
 
     public void MusicFunc(bool Start)
     {

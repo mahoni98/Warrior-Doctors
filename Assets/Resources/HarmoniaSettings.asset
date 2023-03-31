@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildType: 0
   levelManagerType: 0
-  LevelArray: 01000000
+  LevelArray: 
   loadingType: 0
   loadingSecond: 1
-  tutorialType: 0
-  tutorialLevelIndex: 1
+  tutorialType: 1
+  tutorialLevelIndex: 2

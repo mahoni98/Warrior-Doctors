@@ -1,28 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    public static SceneControl instance = null;
-
-    [HideInInspector]
-    public int levelIndex;
-    public bool firstLogin;
-
-
-    void Awake()
+    
+    public void OpenScene(string SceneName)
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else if (this != instance)
-        {
-            Destroy(gameObject);
-        }
-        firstLogin = true;
+        SceneManager.LoadScene(SceneName);
     }
 
 }
