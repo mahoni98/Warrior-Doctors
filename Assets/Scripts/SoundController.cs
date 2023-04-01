@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SoundController : MonoBehaviour
@@ -49,7 +50,7 @@ public class SoundController : MonoBehaviour
 
     public void MusicFunc(bool Start)
     {
-        if (Start)
+        if (Start && SceneManager.GetActiveScene().name != "GameDevScene_V01")
         {
             if (Music == 1)
             {
@@ -70,7 +71,7 @@ public class SoundController : MonoBehaviour
                 SoundImage.sprite = SoundCloseSprite;
             }
         }
-        else
+        else if (SceneManager.GetActiveScene().name != "GameDevScene_V01")
         {
             if (Music == 1)
             {
