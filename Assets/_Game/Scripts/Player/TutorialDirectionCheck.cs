@@ -36,7 +36,7 @@ public class TutorialDirectionCheck : MonoBehaviour
         if (tutorialCounter < tutorialFingers.Length - 1)
             tutorialCounter++;
         else
-            Invoke("FinishTutorial", 2);
+            Invoke("FinishTutorial", 1);
         tutorialFingers[tutorialCounter].SetActive(true);
     }
     private void FinishTutorial()

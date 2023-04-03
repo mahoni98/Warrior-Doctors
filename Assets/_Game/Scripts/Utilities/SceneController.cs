@@ -22,7 +22,8 @@ public class SceneController : MonoBehaviour
     }
     public void ShowWinPanel()
     {
-        WinPanel.SetActive(true);
+        //WinPanel.SetActive(true);
+        nextScene();
     }
     private void Update()
     {
@@ -39,6 +40,6 @@ public class SceneController : MonoBehaviour
     }
     public void nextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("LoadingScene");
     }
 }

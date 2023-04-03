@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     public void Movement(Vector3 Direction, bool CollisionTree = false)
     {
+        Haptic.Instance.HapticSoft();
         SoundController.instance.PlaySound(SoundController.Type.Jump);
         Time.timeScale = 1;
         transform.DOKill();
@@ -146,15 +147,19 @@ public class PlayerController : MonoBehaviour
         //SoundController.instance.PlaySound(SoundController.Type.PlayerDamage);
         GroundController.instance.AddKill();
 
-        if (isMove)
-        {
-            Debug.Log("Score ++");
-        }
-        else
-        {
-            Debug.Log("HitMe");
-            health -= 10;
-        }
+        //if (isMove)
+        //{
+        //    Debug.Log("Score ++");
+        //}
+        //else
+        //{
+        //    Debug.Log("HitMe");
+        //    health -= 10;
+        //    Haptic.Instance.HapticDamage();
+        //}
+        Debug.Log("HitMe");
+        health -= 10;
+        Haptic.Instance.HapticDamage();
 
         if (health <= 0)
         {
@@ -193,6 +198,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Score ++");
         UpgradeSystem.instance.AddCoin();
+        Haptic.Instance.HapticSoft();
     }
 
     void canvasUpdate()
@@ -234,6 +240,7 @@ public class PlayerController : MonoBehaviour
         if (health > 100)
             health = 100;
         canvasUpdate();
+        Haptic.Instance.HapticSoft();
     }
 }
 

@@ -140,7 +140,7 @@ public class LevelManager : MonoBehaviour
 #if UNITY_EDITOR
 
         Debug.Log("Last Level:" + lastLevel);
-        Debug.Log("Level Mod:" + (lastLevel % harmoniaSettings.LevelArray.Count));
+        //Debug.Log("Level Mod:" + (lastLevel % harmoniaSettings.LevelArray.Count));
 #endif
     }
 
