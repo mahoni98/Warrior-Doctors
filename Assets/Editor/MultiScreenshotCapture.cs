@@ -192,14 +192,16 @@ namespace MultiScreenshotCaptureNamespace
 
 		private readonly List<CustomResolution> queuedScreenshots = new List<CustomResolution>();
 
-		[MenuItem("MSC Games/Screenshot")]
-		private static void Init()
-		{
-			MultiScreenshotCapture window = GetWindow<MultiScreenshotCapture>();
-			window.titleContent = new GUIContent("Screenshot");
-			window.minSize = new Vector2(325f, 150f);
-			window.Show();
-		}
+		//[MenuItem("MSC Games/Screenshot")]
+		//private static void Init()
+		//{
+		//	MultiScreenshotCapture window = GetWindow<MultiScreenshotCapture>();
+		//	window.titleContent = new GUIContent("Screenshot");
+		//	window.minSize = new Vector2(325f, 150f);
+		//	window.Show();
+		//}
+
+
 
 		private void Awake()
 		{
