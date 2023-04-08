@@ -144,6 +144,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6582038800191569117, guid: abf7043edbfd24abb829fcaf4fb9857a,
         type: 3}
+      propertyPath: MSCSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 60ba3bc9573aa453293d93ba0e1c2f25,
+        type: 2}
+    - target: {fileID: 6582038800191569117, guid: abf7043edbfd24abb829fcaf4fb9857a,
+        type: 3}
       propertyPath: harmoniaSettings
       value: 
       objectReference: {fileID: 11400000, guid: 60ba3bc9573aa453293d93ba0e1c2f25,
@@ -474,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastLevel: 0
-  HarmoniaSettings: {fileID: 0}
+  MSCSettings: {fileID: 11400000, guid: 60ba3bc9573aa453293d93ba0e1c2f25, type: 2}
   updateReqPanel: {fileID: 0}
   loadingSlider: {fileID: 423152997}
 --- !u!114 &1486475789

@@ -21,4 +21,4 @@ EditorBuildSettings:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4c2ab9462cfed4524845dc6ee107439a,
       type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
-      guid: 633969fe83172814c836125ad153bb9a, type: 2}
+      guid: 9fcbbe04498c6544985871afb4a20155, type: 2}
