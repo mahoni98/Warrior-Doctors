@@ -44,47 +44,43 @@ public class SoundController : MonoBehaviour
 
     private void Start()
     {
-        MusicFunc(true);
+        StartChechk();
     }
 
-
-    public void MusicFunc(bool Start)
+    public void StartChechk()
     {
-        if (Start && SceneManager.GetActiveScene().name != "GameDevScene_V01")
+        if (Music == 1)
         {
-            if (Music == 1)
-            {
-                GameMusic.Play();
-                MusicImage.sprite = MusicOpenSprite;
-            }
-            else
-            {
-                GameMusic.Stop();
-                MusicImage.sprite = MusicCloseSprite;
-            }
-            if (Sound == 1)
-            {
-                SoundImage.sprite = SoundOpenSprite;
-            }
-            else
-            {
-                SoundImage.sprite = SoundCloseSprite;
-            }
+            GameMusic.Play();
+            MusicImage.sprite = MusicOpenSprite;
         }
-        else if (SceneManager.GetActiveScene().name != "GameDevScene_V01")
+        else
         {
-            if (Music == 1)
-            {
-                GameMusic.Stop();
-                MusicImage.sprite = MusicCloseSprite;
-                PlayerPrefs.SetInt("Music", 0);
-            }
-            else
-            {
-                GameMusic.Play();
-                MusicImage.sprite = MusicOpenSprite;
-                PlayerPrefs.SetInt("Music", 1);
-            }
+            GameMusic.Stop();
+            MusicImage.sprite = MusicCloseSprite;
+        }
+        if (Sound == 1)
+        {
+            SoundImage.sprite = SoundOpenSprite;
+        }
+        else
+        {
+            SoundImage.sprite = SoundCloseSprite;
+        }
+    }
+    public void MusicChangeBtn()
+    {
+        if (Music == 1)
+        {
+            GameMusic.Stop();
+            MusicImage.sprite = MusicCloseSprite;
+            PlayerPrefs.SetInt("Music", 0);
+        }
+        else
+        {
+            GameMusic.Play();
+            MusicImage.sprite = MusicOpenSprite;
+            PlayerPrefs.SetInt("Music", 1);
         }
     }
     public void SoundFunc()

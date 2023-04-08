@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
     public int lastLevel;
-    [SerializeField] private HarmoniaGamesSettings HarmoniaSettings = null;
+    [SerializeField] private MSCGameSettings MSCSettings = null;
     [SerializeField] private GameObject updateReqPanel;
 
     public Slider loadingSlider;
@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
     void Awake()
     {
 
-        HarmoniaSettings = Resources.Load<HarmoniaGamesSettings>("HarmoniaSettings");
+        MSCSettings = Resources.Load<MSCGameSettings>("MSCSettings");
 
     }
 
@@ -32,43 +32,14 @@ public class SceneLoader : MonoBehaviour
 
     void Start()
     {
-        //if (!isUpdateRequired)
-        //{
-        //    lastLevel = PlayerPrefs.GetInt("lastLevel", 1);
-
-        //    if (SceneControl.instance.firstLogin)
-        //    {
-
-        //        if(PlayerPrefs.GetInt("firstLevelCompleted") == 0 && HarmoniaSettings.tutorialType == HarmoniaGamesSettings.TutorialType.TutorialScene)
-        //        {
-        //            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.tutorialLevelIndex, HarmoniaSettings.loadingSecond));
-        //             #if UNITY_EDITOR
-        //             Debug.Log("Level: Tutorial" + HarmoniaSettings.tutorialLevelIndex);
-        //            #endif
-
-        //        }
-        //        else if (PlayerPrefs.GetInt("firstLevelCompleted") == 0 && HarmoniaSettings.tutorialType == HarmoniaGamesSettings.TutorialType.TutorialInLevel1)
-        //        {
-        //            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.LevelArray[((lastLevel - 1) % HarmoniaSettings.LevelArray.Count)], HarmoniaSettings.loadingSecond));
-        //        }
-        //        else
-        //        {
-        //            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.LevelArray[((lastLevel-1) % HarmoniaSettings.LevelArray.Count)], HarmoniaSettings.loadingSecond));
-        //        }
-
-        //        SceneControl.instance.firstLogin = false;
-        //    }
-        //    else
-        //        StartCoroutine(AsyncSceneLoader(SceneControl.instance.levelIndex, HarmoniaSettings.loadingSecond));
-        //}
-
+       
         if (PlayerPrefs.GetInt("firstLevelCompleted") == 0)
         {
-            StartCoroutine(AsyncSceneLoader(HarmoniaSettings.tutorialLevelIndex, HarmoniaSettings.loadingSecond));
+            StartCoroutine(AsyncSceneLoader(MSCSettings.tutorialLevelIndex, MSCSettings.loadingSecond));
         }
         else
         {
-            StartCoroutine(AsyncSceneLoader(3, HarmoniaSettings.loadingSecond));
+            StartCoroutine(AsyncSceneLoader(3, MSCSettings.loadingSecond));
         }
     }
 
@@ -77,7 +48,7 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator AsyncSceneLoader(int BuildIndex, float seconds)
     {
-        if (HarmoniaSettings.loadingType == HarmoniaGamesSettings.LoadingType.FakeLoading)  //
+        if (MSCSettings.loadingType == MSCGameSettings.LoadingType.FakeLoading)  //
         {
             float currentTime = 0;
 

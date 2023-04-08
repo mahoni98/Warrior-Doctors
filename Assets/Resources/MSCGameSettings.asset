@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99058454036544b3296428e72bf39efa, type: 3}
-  m_Name: HarmoniaSettings
+  m_Name: MSCGameSettings
   m_EditorClassIdentifier: 
-  buildType: 0
+  buildType: 1
   levelManagerType: 0
   LevelArray: 
   loadingType: 0

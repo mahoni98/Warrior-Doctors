@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3966139427415951661}
   - component: {fileID: 6582038800191569117}
   m_Layer: 0
-  m_Name: HarmoniaGames
+  m_Name: MSCGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

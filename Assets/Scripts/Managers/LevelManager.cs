@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 {
     private static LevelManager instance = null;
 
-    [SerializeField] private HarmoniaGamesSettings harmoniaSettings = null;
+    [SerializeField] private MSCGameSettings MSCSettings = null;
 
     private int lastLevel =0;
     private int _isFirstLevelFirstlyCompleted;
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        harmoniaSettings = Resources.Load<HarmoniaGamesSettings>("HarmoniaSettings");
+        MSCSettings = Resources.Load<MSCGameSettings>("MSCSettings");
         lastLevel = PlayerPrefs.GetInt("lastLevel", 1);
         _tryNum = PlayerPrefs.GetInt("tryNum", 1);
         _isFirstLevelFirstlyCompleted = PlayerPrefs.GetInt("firstLevelCompleted", 0);
@@ -140,7 +140,7 @@ public class LevelManager : MonoBehaviour
 #if UNITY_EDITOR
 
         Debug.Log("Last Level:" + lastLevel);
-        //Debug.Log("Level Mod:" + (lastLevel % harmoniaSettings.LevelArray.Count));
+        //Debug.Log("Level Mod:" + (lastLevel % MSCSettings.LevelArray.Count));
 #endif
     }
 
@@ -149,12 +149,12 @@ public class LevelManager : MonoBehaviour
 #if UNITY_EDITOR
 
         Debug.Log("Last Level:" + lastLevel);
-        Debug.Log("Level Mod:" + (lastLevel % harmoniaSettings.LevelArray.Count));
+        Debug.Log("Level Mod:" + (lastLevel % MSCSettings.LevelArray.Count));
         Debug.Log("New Level:" + (lastLevel + 1));
 
 #endif
 
-        StartCoroutine(AsyncSceneLoader(harmoniaSettings.LevelArray[((lastLevel) % harmoniaSettings.LevelArray.Count)]));
+        StartCoroutine(AsyncSceneLoader(MSCSettings.LevelArray[((lastLevel) % MSCSettings.LevelArray.Count)]));
         lastLevel++;
         PlayerPrefs.SetInt("lastLevel", lastLevel);
     }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName= "Harmonia Games/Harmonia Games Settings", fileName = "HarmoniaSettings")]
+[CreateAssetMenu(menuName= "MSC Games/MSC Games Settings", fileName = "MSCSettings")]
 
-public class HarmoniaGamesSettings : ScriptableObject
+public class MSCGameSettings : ScriptableObject
 {
 
     public enum BuildType { Debug, Release }

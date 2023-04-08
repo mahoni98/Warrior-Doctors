@@ -192,7 +192,7 @@ namespace MultiScreenshotCaptureNamespace
 
 		private readonly List<CustomResolution> queuedScreenshots = new List<CustomResolution>();
 
-		[MenuItem("Harmonia Games/Screenshot")]
+		[MenuItem("MSC Games/Screenshot")]
 		private static void Init()
 		{
 			MultiScreenshotCapture window = GetWindow<MultiScreenshotCapture>();
