@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
+
     public int lastLevel;
     [SerializeField] private MSCGameSettings MSCSettings = null;
     [SerializeField] private GameObject updateReqPanel;
@@ -13,26 +15,19 @@ public class SceneLoader : MonoBehaviour
     public Slider loadingSlider;
     private bool isUpdateRequired;
 
-
-
-
     void Awake()
     {
-
         MSCSettings = Resources.Load<MSCGameSettings>("MSCSettings");
-
     }
 
     public void OnUpdateRequired()
     {
         isUpdateRequired = true;
-
-
     }
 
     void Start()
     {
-       
+
         if (PlayerPrefs.GetInt("firstLevelCompleted") == 0)
         {
             StartCoroutine(AsyncSceneLoader(MSCSettings.tutorialLevelIndex, MSCSettings.loadingSecond));
@@ -43,36 +38,34 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-
-
-
     IEnumerator AsyncSceneLoader(int BuildIndex, float seconds)
     {
         if (MSCSettings.loadingType == MSCGameSettings.LoadingType.FakeLoading)  //
         {
-            float currentTime = 0;
-
-            while (currentTime < seconds)
+            DOTween.To(() => 0f, x =>
             {
-                currentTime += Time.deltaTime;
-                loadingSlider.value = currentTime;
-                yield return null;
-            }
+                loadingSlider.value = x;
+            }, 1f, seconds).OnComplete(() => SceneManager.LoadScene(BuildIndex));
 
-            AsyncOperation asyncLoadScene = SceneManager.LoadSceneAsync(BuildIndex, LoadSceneMode.Single);
+            //float currentTime = 0;
+
+            //while (currentTime < seconds)
+            //{
+            //    currentTime += Time.deltaTime;
+            //    loadingSlider.value = currentTime;
+            //    yield return null;
+            //}
+            //AsyncOperation asyncLoadScene = SceneManager.LoadSceneAsync(BuildIndex, LoadSceneMode.Single);
         }
         else
         {
             AsyncOperation asyncLoadScene = SceneManager.LoadSceneAsync(BuildIndex, LoadSceneMode.Single);
+
             while (!asyncLoadScene.isDone)
             {
                 loadingSlider.value = asyncLoadScene.progress;
                 yield return null;
             }
         }
-
-
-
-
     }
 }

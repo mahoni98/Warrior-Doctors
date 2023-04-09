@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Score ++");
         UpgradeSystem.instance.AddCoin();
-        Haptic.Instance.HapticSoft();
+        //Haptic.Instance.HapticSoft();
     }
 
     void canvasUpdate()
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
         if (health > 100)
             health = 100;
         canvasUpdate();
-        Haptic.Instance.HapticSoft();
+        //Haptic.Instance.HapticSoft();
     }
 }
 
