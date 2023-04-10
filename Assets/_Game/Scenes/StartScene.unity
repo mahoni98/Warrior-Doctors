@@ -2198,6 +2198,92 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &1105823215
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5793498479331402354, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_Name
+      value: Ads
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402355, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.858536
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 67.29405
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.205505
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793498479331402636, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f2f5d8b13ab2d748914dcb991d7a475, type: 3}
+--- !u!114 &1105823216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5793498479331402352, guid: 0f2f5d8b13ab2d748914dcb991d7a475,
+    type: 3}
+  m_PrefabInstance: {fileID: 1105823215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fa4584b8df84b48b28437ccc95143b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1423861699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,7 +2831,7 @@ GameObject:
   - component: {fileID: 1620121636}
   - component: {fileID: 1620121638}
   m_Layer: 5
-  m_Name: Button_Lobby_Battle
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2855,10 +2941,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 215090330}
-        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
-        m_MethodName: OpenScene
-        m_Mode: 5
+      - m_Target: {fileID: 1105823216}
+        m_TargetAssemblyTypeName: GoogleInterstitial, Assembly-CSharp
+        m_MethodName: InterShow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

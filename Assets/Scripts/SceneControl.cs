@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    
     public void OpenScene(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
+        AdsController.instance.HideBanner();
     }
-
 }

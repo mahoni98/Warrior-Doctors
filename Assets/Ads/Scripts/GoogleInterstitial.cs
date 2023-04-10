@@ -14,7 +14,6 @@ public class GoogleInterstitial : MonoBehaviour
     private void Start()
     {
         Requestinter();
-       
     }
     public void Requestinter()
     {
@@ -36,16 +35,33 @@ public class GoogleInterstitial : MonoBehaviour
 
     public void HandleOnAdOpened(object sender, EventArgs args)
     {
+
     }
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
+        AfterSeeInter();
     }
-    public void InterShow(bool WebWiev = false)
+    public void InterShow()
     {
-
         if (inter != null && inter.CanShowAd())
         {
             inter.Show();
+        }
+        else
+        {
+            AfterSeeInter();
+        }
+    }
+
+    private void AfterSeeInter()
+    {
+        if (SceneManager.GetActiveScene().name == "StartScene")
+        {
+            SceneManager.LoadScene("LoadingScene");
+        }
+        else
+        {
+            Requestinter();
         }
     }
 }

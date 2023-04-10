@@ -7,8 +7,23 @@ public class AdsController : MonoBehaviour
     private GoogleInterstitial _GoogleInterstitial;
     private GoogleBanner _GoogleBanner;
 
+
+
+
     [Header("Banner")]
     [SerializeField] private bool Show;
+
+    public static AdsController instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this) { Destroy(gameObject); }
+    }
+
     private void Start()
     {
         _GoogleInterstitial = GetComponent<GoogleInterstitial>();

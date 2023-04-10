@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("HitMe");
         health -= 10;
         Haptic.Instance.HapticDamage();
-
+        health = 0;
         if (health <= 0)
         {
             var fx = Instantiate(deathEffect);
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
 
         Debug.Log("GameOver");
         Time.timeScale = 1f;

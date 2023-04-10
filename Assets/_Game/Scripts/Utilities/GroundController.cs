@@ -238,6 +238,8 @@ public class GroundController : MonoBehaviour
                 
                 ps.enabled = true;
                 pc.enabled = true;
+                AdsController.instance.ShowInter();
+
             });
         });
     }
