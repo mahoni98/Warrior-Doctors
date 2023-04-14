@@ -16,7 +16,7 @@ public class UIController : MonoBehaviour
     {
         if (!Open)
         {
-            PopUp.DOScale(Vector3.zero, 0.5f).SetEase(TypeClose).OnComplete(() =>
+            PopUp.DOScale(Vector3.zero, 0.3f).SetEase(TypeClose).OnComplete(() =>
             {
                 PopUpBack.SetActive(false);
             });
@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour
         {
             PopUpBack.SetActive(true);
             PopUp.localScale = Vector3.zero;
-            PopUp.DOScale(Vector3.one, 0.5f).SetEase(TypeOpen);
+            PopUp.DOScale(Vector3.one, 0.4f).SetEase(TypeOpen);
         }
     }
 

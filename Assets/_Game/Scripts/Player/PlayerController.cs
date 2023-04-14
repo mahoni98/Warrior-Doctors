@@ -160,38 +160,33 @@ public class PlayerController : MonoBehaviour
         Debug.Log("HitMe");
         health -= 10;
         Haptic.Instance.HapticDamage();
-        health = 0;
         if (health <= 0)
         {
             var fx = Instantiate(deathEffect);
             fx.transform.position = transform.position;
-
-            StartCoroutine(deathWait());
-            //this.enabled = false;
-
+            deathWait();
             col.enabled = false;
         }
-
         canvasUpdate();
     }
 
-    IEnumerator deathWait()
+    private void  deathWait()
     {
         playerObject.SetActive(false);
         PlayerSwipe.instance.gameObject.SetActive(false);
-
+        AdsController.instance.HideBanner();
         Time.timeScale = 1f;
 
-        yield return new WaitForSecondsRealtime(1f);
+        DOTween.Sequence().AppendInterval(1f).OnComplete(() => {
+            Debug.Log("GameOver");
+            Time.timeScale = 1f;
+            DOTween.KillAll();
+            this.gameObject.SetActive(false);
 
-        Debug.Log("GameOver");
-        Time.timeScale = 1f;
-        DOTween.KillAll();
-        this.gameObject.SetActive(false);
-
-        GameOverCanvas.SetActive(true);
-        SoundController.instance.PlaySound(SoundController.Type.lose);
-        LevelManager.Instance.LevelFailed();
+            GameOverCanvas.SetActive(true);
+            SoundController.instance.PlaySound(SoundController.Type.lose);
+            LevelManager.Instance.LevelFailed();
+        });
     }
 
     public void Coin()
